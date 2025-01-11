@@ -1,0 +1,142 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4603,        132]
+NotebookOptionsPosition[      4125,        115]
+NotebookOutlinePosition[      4519,        131]
+CellTagsIndexPosition[      4476,        128]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Define", " ", "the", " ", "Jacobian", " ", "matrix"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"jacobianMatrix", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "8"}], ",", 
+         RowBox[{"-", "9"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", 
+         RowBox[{"-", "15"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Compute", " ", "the", " ", "eigenvalues"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eigenvalues", "=", 
+     RowBox[{"Eigenvalues", "[", "jacobianMatrix", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Classify", " ", "the", " ", "system", " ", "based", " ", "on", " ", 
+     "eigenvalues"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"classification", "=", 
+     RowBox[{"Which", "[", "\[IndentingNewLine]", "  ", 
+      RowBox[{
+       RowBox[{"AllTrue", "[", 
+        RowBox[{
+         RowBox[{"Re", "[", "eigenvalues", "]"}], ",", 
+         RowBox[{
+          RowBox[{"#", "<", "0"}], " ", "&"}]}], "]"}], ",", 
+       "\"\<Stable Node\>\"", ",", "\[IndentingNewLine]", "  ", 
+       RowBox[{"AnyTrue", "[", 
+        RowBox[{
+         RowBox[{"Re", "[", "eigenvalues", "]"}], ",", 
+         RowBox[{
+          RowBox[{"#", ">", "0"}], " ", "&"}]}], "]"}], ",", 
+       "\"\<Unstable Node\>\"", ",", "\[IndentingNewLine]", "  ", 
+       RowBox[{
+        RowBox[{"Sign", "[", 
+         RowBox[{"Times", " ", "@@", " ", 
+          RowBox[{"Re", "[", "eigenvalues", "]"}]}], "]"}], "==", 
+        RowBox[{"-", "1"}]}], ",", "\"\<Saddle Point\>\"", ",", 
+       "\[IndentingNewLine]", "  ", 
+       RowBox[{"AllTrue", "[", 
+        RowBox[{
+         RowBox[{"Re", "[", "eigenvalues", "]"}], ",", 
+         RowBox[{
+          RowBox[{"#", "==", "0"}], " ", "&"}]}], "]"}], ",", 
+       "\"\<Center\>\"", ",", "\[IndentingNewLine]", "  ", 
+       RowBox[{
+        RowBox[{"AnyTrue", "[", 
+         RowBox[{
+          RowBox[{"Im", "[", "eigenvalues", "]"}], ",", 
+          RowBox[{
+           RowBox[{"#", "!=", "0"}], " ", "&"}]}], "]"}], "&&", 
+        RowBox[{"AllTrue", "[", 
+         RowBox[{
+          RowBox[{"Re", "[", "eigenvalues", "]"}], ",", 
+          RowBox[{
+           RowBox[{"#", ">", "0"}], " ", "&"}]}], "]"}]}], ",", 
+       "\"\<Spiral Source\>\"", ",", "\[IndentingNewLine]", "  ", 
+       RowBox[{
+        RowBox[{"AnyTrue", "[", 
+         RowBox[{
+          RowBox[{"Im", "[", "eigenvalues", "]"}], ",", 
+          RowBox[{
+           RowBox[{"#", "!=", "0"}], " ", "&"}]}], "]"}], "&&", 
+        RowBox[{"AllTrue", "[", 
+         RowBox[{
+          RowBox[{"Re", "[", "eigenvalues", "]"}], ",", 
+          RowBox[{
+           RowBox[{"#", "<", "0"}], " ", "&"}]}], "]"}]}], ",", 
+       "\"\<Spiral Sink\>\"", ",", "\[IndentingNewLine]", "  ", "True", ",", 
+       "\"\<Other\>\""}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "classification"}]}]], "Input",
+ CellChangeTimes->{{3.94317455175115*^9, 3.9431745824565573`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"217b4fc3-91f4-4648-bccb-c54744480b67"],
+
+Cell[BoxData["\<\"Stable Node\"\>"], "Output",
+ CellChangeTimes->{3.943174583907486*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"0a3f560d-ad88-4877-b35f-7752c889f0fc"]
+}, Open  ]]
+},
+WindowSize->{606, 683.25},
+WindowMargins->{{417, Automatic}, {Automatic, 63}},
+FrontEndVersion->"14.1 for Linux x86 (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2f83ab0b-8161-4238-8cbb-7599ac9db9ed"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 3364, 86, 432, "Input",ExpressionUUID->"217b4fc3-91f4-4648-bccb-c54744480b67"],
+Cell[3943, 110, 166, 2, 77, "Output",ExpressionUUID->"0a3f560d-ad88-4877-b35f-7752c889f0fc"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
